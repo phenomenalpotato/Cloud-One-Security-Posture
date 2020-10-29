@@ -1,0 +1,7 @@
+{
+    "deepcode.uploadApproved": true,
+    "files.associations": {
+        "*.py": "python",
+        "COSP.C": "cpp"
+    }
+}
