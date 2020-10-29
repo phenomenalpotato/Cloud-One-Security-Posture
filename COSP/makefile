@@ -1,13 +1,15 @@
 LIBS = -lcurl
+exe = cosp
+sfile = cospo.c 
 
 all:
 	@echo "Compiling..."
-	gcc cosp.c $(LIBS) -o cosp
+	gcc ${sfile} $(LIBS) -o ${exe}
 
 execute:
 	@echo "Executing the program..."
-	@./cosp
+	@./${exe}
 
 delete:
 	@ echo "Deleting the executable cosp"
-	rm -f cosp
+	rm -f ${exe}
