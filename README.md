@@ -1,5 +1,5 @@
 # Cloud-One-Security-Posture
-A simple way to see your Cloud Security Posture  while using Trend Micro Cloud One!
+A simple way to see your Cloud Security Posture while using Trend Micro Cloud One!
 
 First thing to do is to <u>export</u> your <b>ApiKey</b> and the <b>URL</b> as an <i>Environment Variables</i>:
 
@@ -52,7 +52,7 @@ You can if you want, after the program run, unset the Environment Variables:
     - unset url
 
 
-For more information about the API for Cloud One Workload Security, Smart Check and Cloud Conformity:
+For more information about the API for <b>Trend Micro Cloud One Workload Security</b>, <b>Smart Check</b> and <b>Cloud Conformity</b>:
 
     - Cloud One Workload Security API: https://cloudone.trendmicro.com/docs/workload-security/api-reference/
 
