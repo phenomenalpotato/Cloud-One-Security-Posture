@@ -42,12 +42,23 @@ For example, if you have your <b>Cloud Conformity Account Hosted</b> in <b>us-we
 
         - make list_accounts
 
+        Function Description: This function allows you to query all accounts that you have access to and see their Account ID.
+
 
 You can if you want, after the program run, unset the Environment Variables:
 
     - unset api
 
     - unset url
+
+
+For more information about the API for Cloud One Workload Security, Smart Check and Cloud Conformity:
+
+    - Cloud One Workload Security API: https://cloudone.trendmicro.com/docs/workload-security/api-reference/
+
+    - Cloud Conformity API Documentation: https://github.com/cloudconformity/documentation-api 
+
+    - Smart Check API Reference: https://cloudone.trendmicro.com/docs/container-security/sc-api/
 
 
 <b>WARNING:</b>
