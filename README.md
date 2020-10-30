@@ -7,9 +7,10 @@ First thing to do is to <u>export</u> your <b>ApiKey</b> and the <b>URL</b> as a
 
     - export url="https://your-region-api.cloudconformity.com/v1/endpoint_that_you_want_to_use"
 
-        For example, if you have your Cloud Conformity Account Hosted in us-west-2 and want to use the list_accounts function: 
+
+For example, if you have your <u>Cloud Conformity Account Hosted</u> in <u>us-west-2</u> and want to use the <b>list_accounts function</b>: 
         
-            - export url="https://us-west-2-api.cloudconformity.com/v1/accounts"
+    - export url="https://us-west-2-api.cloudconformity.com/v1/accounts"
 
 
 <b>HOW TO USE:</b>
