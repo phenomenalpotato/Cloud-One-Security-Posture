@@ -2,7 +2,7 @@
 #include <curl/curl.h>
 #include <string.h>
 
-int cc_get_accounts(char *api, char *url) { // Will receive the URL and APIKey
+int cc_get_accounts(char *api, char *url_l) { // This function allows you to query all accounts that you have access to and see their Account ID.
 
     CURL *curl;
 
@@ -16,7 +16,7 @@ int cc_get_accounts(char *api, char *url) { // Will receive the URL and APIKey
 
       curl_easy_setopt(curl, CURLOPT_HTTPGET, 1); // Mudei Aqui!!!!!
 
-      curl_easy_setopt(curl, CURLOPT_URL, url);
+      curl_easy_setopt(curl, CURLOPT_URL, url_l);
 
 
       #if defined(DEBUG)
@@ -46,7 +46,7 @@ int cc_get_accounts(char *api, char *url) { // Will receive the URL and APIKey
 
 
 
-int cc_all_accounts_checks(void) {
+int cc_all_accounts_checks(char *api, char *url) { // This function will bring from one account that you have access to, checks that are only FAILURE AND SECURITY related.
 
   CURL *curl_checks;
 
@@ -56,9 +56,24 @@ int cc_all_accounts_checks(void) {
 
   if(curl_checks) {
 
+      curl_easy_setopt(curl_checks, CURLOPT_CUSTOMREQUEST, "GET");
+      curl_easy_setopt(curl_checks, CURLOPT_URL, url);
 
+      #if defined(DEBUG)
+      curl_easy_setopt(curl_checks, CURLOPT_VERBOSE, 1l);
+      #endif
+
+      curl_easy_setopt(curl_checks, CURLOPT_FOLLOWLOCATION, 1L);
+      curl_easy_setopt(curl_checks, CURLOPT_DEFAULT_PROTOCOL, "https");
+      struct curl_slist *headers = NULL;
+      headers = curl_slist_append(headers, api);
+      headers = curl_slist_append(headers, "Content-Type: application/vnd.api+json");
+      curl_easy_setopt(curl_checks, CURLOPT_HTTPHEADER, headers);
+      res = curl_easy_perform(curl_checks);
 
   }
+
+  curl_easy_cleanup(curl_checks);
 
   return (int)res;
 }

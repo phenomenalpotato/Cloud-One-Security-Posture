@@ -27,9 +27,11 @@ For example, if you have your <b>Cloud Conformity Account Hosted</b> in <b>us-we
 
         - make delete
     
-    - To debug the connection:
+    - To debug the connection, first run:
 
         - make debug
+        
+        And then run the program with the argument that you want to use!
 
     - To see which Environment Variables existe in your session:
 
@@ -43,6 +45,12 @@ For example, if you have your <b>Cloud Conformity Account Hosted</b> in <b>us-we
         - make list_accounts
 
         Function Description: This function allows you to query all accounts that you have access to and see their Account ID.
+
+        - make cc_all_accounts_checks
+
+        URL to use this function: "https://us-west-2-api.cloudconformity.com/v1/checks?accountIds=FIYGqrqnr&filter%5Bcategories%5D=security&filter%5Bstatuses%5D=FAILURE"
+
+        Function Description: This function will bring from all accounts that you have access to, checks that are only FAILURE AND SECURITY related.
 
 
 You can if you want, after the program run, unset the Environment Variables:

@@ -16,8 +16,8 @@ delete:
 	rm -f ${exe}
 
 debug:
-	@echo "Debuging the connection..."
-	@gcc -D 'DEBUG' ${sfile} ${LIBS} -o ${exe} && ./${exe}
+	@echo "Will Debug the connection..."
+	@gcc -D 'DEBUG' ${sfile} ${LIBS} -o ${exe}
 
 env-var:
 	@echo $$api
@@ -25,3 +25,6 @@ env-var:
 
 list_accounts:
 	@./${exe} l | jq .
+
+cc_all_accounts_checks:
+	@./${exe} c | jq .
