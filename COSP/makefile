@@ -23,8 +23,11 @@ env-var:
 	@echo $$api
 	@echo $$url
 
-list_accounts:
+cc_list_accounts:
 	@./${exe} l | jq .
 
 cc_all_accounts_checks:
 	@./${exe} c | jq .
+
+cc_list_all_events:
+	@./${exe} e | jq .
