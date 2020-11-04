@@ -1,6 +1,42 @@
 #include <stdio.h>
 #include <curl/curl.h>
 #include <string.h>
+#include <unistd.h> // For fork
+#include <sys/types.h> // For pid_t
+#include <sys/wait.h> // For wait
+
+void writecallback(const char *contents, size_t size, size_t nmemb, void *userp) {
+
+  //printf("%s\n", contents);
+
+  //system("jq '.data[].attributes | select(.status==\"FAILURE\""")'"); // Will execute the jq program
+
+  pid_t pid = fork();
+
+    if(pid == 0) { // child process
+
+        //static char *argvi[] = {"cat", "teste.json | jq '.data[].attributes | select(.status==\"FAILURE\""")'", NULL};
+
+        //char *argvi[] = {"jq", "-n", "{ \"data\": { \"attributes\": { \"type\": \"cloudformation-template\", \"contents\": \"---\\nAWSTemplateFormatVersion: '2010-09-09'\\nResources:\\n  S3Bucket:\\n    Type: AWS::S3::Bucket\\n    Properties:\\n      AccessControl: PublicRead\" } }}"};
+
+        static char *argvi[] = {"jq", "-n", "{ \"data\": { \"attributes\": { \"type\": \"cloudformation-template\", \"contents\": \"---\\nAWSTemplateFormatVersion: '2010-09-09'\\nResources:\\n  S3Bucket:\\n    Type: AWS::S3::Bucket\\n    Properties:\\n      AccessControl: PublicRead\" } }}"};
+
+        execv("/usr/bin/jq", argvi);
+
+        exit(127); // Only if exec fails
+
+    }
+
+    else { // pid !=; parent process
+
+        waitpid(pid, 0, 0); // wait for child to exit
+
+    }
+
+
+  //return contents;
+  
+}
 
 int cc_get_accounts(char *api, char *url_l) { // This function allows you to query all accounts that you have access to and see their Account ID.
 
@@ -58,7 +94,8 @@ int cc_all_accounts_checks(char *api, char *url_c) { // This function will bring
 
       curl_easy_setopt(curl_checks, CURLOPT_CUSTOMREQUEST, "GET");
       curl_easy_setopt(curl_checks, CURLOPT_URL, url_c);
-
+      curl_easy_setopt(curl_checks, CURLOPT_WRITEFUNCTION, writecallback); // Comentar aqui caso queira que o texto apareça Aqui!!!!
+      
       #if defined(DEBUG)
       curl_easy_setopt(curl_checks, CURLOPT_VERBOSE, 1l);
       #endif
@@ -70,6 +107,9 @@ int cc_all_accounts_checks(char *api, char *url_c) { // This function will bring
       headers = curl_slist_append(headers, "Content-Type: application/vnd.api+json");
       curl_easy_setopt(curl_checks, CURLOPT_HTTPHEADER, headers);
       res = curl_easy_perform(curl_checks);
+
+      //system("./cosp c | jq '.data[].attributes | select(.status==\"FAILURE\""")'"); // Will execute the jq program
+
 
   }
 

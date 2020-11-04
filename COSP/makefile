@@ -21,7 +21,9 @@ debug:
 
 env-var:
 	@echo $$api
-	@echo $$url
+	@echo $$url_l
+	@echo $$url_c
+	@echo $$url_e
 
 cc_list_accounts:
 	@./${exe} l | jq .
