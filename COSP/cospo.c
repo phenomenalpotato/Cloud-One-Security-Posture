@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "cc.h"
-#include "sm.h"
-#include "ds.h"
+#include "cc.c"
+#include "sm.cpp"
+#include "ds.cpp"
 
 
 // Fazer com que o user possa passar mais de um argumento e fazer com isso, consiga executar mais funções do que de uma vez!! 
