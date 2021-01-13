@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <curl/curl.h>
 #include <string.h>
-#include <unistd.h> // For fork
-#include <sys/types.h> // For pid_t
-#include <sys/wait.h> // For wait
 
 int cc_get_accounts(char *api, char *url_l) { // This function allows you to query all accounts that you have access to and see their Account ID.
 

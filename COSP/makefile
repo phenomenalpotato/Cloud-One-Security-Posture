@@ -1,10 +1,11 @@
 LIBS = -lcurl
 exe = cosp
-sfile = cospo.c 
+sfile = cospo.c
+COMP = g++
 
 all:
 	@echo "Compiling..."
-	gcc ${sfile} $(LIBS) -o ${exe}
+	${COMP} ${sfile} $(LIBS) -o ${exe}
 
 execute: 
 	@echo "Executing the program with no Arguments..."
@@ -12,12 +13,12 @@ execute:
 
 
 delete:
-	@ echo "Deleting the executable cosp..."
+	@echo "Deleting the executable cosp..."
 	rm -f ${exe}
 
 debug:
 	@echo "Will Debug the connection..."
-	@gcc -D 'DEBUG' ${sfile} ${LIBS} -o ${exe}
+	@${COMP} -D 'DEBUG' ${sfile} ${LIBS} -o ${exe}
 
 env-var:
 	@echo $$api

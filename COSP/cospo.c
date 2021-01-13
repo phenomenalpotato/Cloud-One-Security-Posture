@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "cc.c"
+#include "cc.cpp"
 #include "sm.cpp"
 #include "ds.cpp"
 
@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 
     if(api == NULL || url_l == NULL || url_c == NULL || url_e == NULL) {
 
-        perror("ERROR: Variable not found!!");
+        perror("ERROR: Variables not found!!");
 
     }
    
