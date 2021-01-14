@@ -119,7 +119,13 @@ int cc_get_accounts(const char *api, std::string url_l) { // This function allow
 
 // }
 
-void findJson(std::array <std::string, 9> fiel) {
+bool Comp(std::string valor1, std::string valor2) {
+
+  return valor1.compare(valor2);
+
+}
+
+void findJson(std::string attribute) {
 
   PONTO
 
@@ -131,21 +137,26 @@ void findJson(std::array <std::string, 9> fiel) {
 
       json parsed_json = json::parse(ifs);
 
-      std::string field = "attributes";
-
-      std::string field2 = "id";
-
-      std::string field3 = "relationships";
-
-      std::string field4 = "name";
-
       for(auto el : parsed_json["data"].items()) {
 
-        std::cout << std::setw(4) << el.key() << " : " << std::setw(4) << el.value()[field] << '\n'; // What fields will the user search
+        if(Comp(attribute, "attributes") == 0) { // Will show only the attribute field from the Json
 
-        std::cout << std::setw(4) << el.value()[field2] << '\n'; // What fields will the user search
+          std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["attributes"] << '\n';  // What fields will the user search
+          // break;
 
-        std::cout << std::setw(4) << el.value()[field3] << '\n'; // What fields will the user search
+        }
+
+        if(Comp(attribute, "id") == 0) { // Will show only the id field from the Json
+
+          std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["id"] << '\n'; // What fields will the user search
+
+        }
+
+        if(Comp(attribute, "relationships") == 0) { // Will show only the relationships field from the Json
+
+          std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["relationships"] << '\n'; // What fields will the user search
+
+        }
 
         PONTO
 
@@ -198,37 +209,14 @@ int main(void) {
 
   if(decision == 1) {
     
-  std::array <std::string, 9> filtro;
+    std::string field; 
 
-    std::cin.ignore(); // Ignores \n or the previous input that was left
-    printf("What is the name of the field that you want: ");
-    getline(std::cin, filtro[0]);
+    std::cin.ignore();
 
-    for(int i = 1; i <= 8; i++) {
+    puts("Do you want the attributes field, or id, or relationships: ");
+    getline(std::cin, field);
 
-        char conti = 0;
-
-        printf("Want to continue: [s][n]: ");
-        scanf(" %c", &conti); // To ignore any space left before
-        fflush(stdin); // To flush the stream after using scanf()
-
-            if(conti == 's') {
-
-              std::cin.ignore(); // Ignores \n or the previous input that was left
-              
-              printf("What is the name of the field that you want: ");
-              getline(std::cin, filtro[i]);
-
-            }
-
-          else {
-
-            break;
-          }
-
-  }
-
-    findJson(filtro);
+    findJson(field);
 
   }
 
