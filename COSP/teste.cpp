@@ -5,7 +5,7 @@
 #include <iostream> // Necessary to read and write files
 #include <nlohmann/json.hpp>
 #include <fstream> // Necessary to read and write files
-#include <iomanip>
+#include <iomanip> // Necessary to use std::setw()
 
 #define PONTO puts("==============--------------------===========================---------------------");
 
