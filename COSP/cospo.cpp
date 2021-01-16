@@ -50,7 +50,7 @@ bool Comp(std::string valor1, std::string valor2) {
 
 }
 
-void findJson(std::string attribute) {
+void findJson(std::string attribute, short int decisionEndpointSearchJson) {
 
   PONTO
 
@@ -62,46 +62,94 @@ void findJson(std::string attribute) {
 
       json parsed_json = json::parse(ifs);
 
-      for(auto el : parsed_json["data"].items()) {
+      if(decisionEndpointSearchJson == 1 || decisionEndpointSearchJson == 2 || decisionEndpointSearchJson == 3) {
 
-          if(Comp(attribute, "attributes") == 0) { // Will show only the attribute field from the Json
+        for(auto el : parsed_json["data"].items()) {
 
-            std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["attributes"] << '\n';  // What fields will the user search
+            if(Comp(attribute, "attributes") == 0) { // Will show only the attribute field from the Json
 
-          }
+              std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["attributes"] << '\n';  // What fields will the user search
 
-          if(Comp(attribute, "id") == 0) { // Will show only the id field from the Json
+            }
 
-            std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["id"] << '\n'; // What fields will the user search
+            if(Comp(attribute, "id") == 0) { // Will show only the id field from the Json
 
-          }
+              std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["id"] << '\n'; // What fields will the user search
 
-          if(Comp(attribute, "relationships") == 0) { // Will show only the relationships field from the Json
+            }
 
-            std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["relationships"] << '\n'; // What fields will the user search
+            if(Comp(attribute, "relationships") == 0) { // Will show only the relationships field from the Json
 
-          }
+              std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["relationships"] << '\n'; // What fields will the user search
 
-          if(Comp(attribute, "rule") == 0) { // Will show only the rule field from the Json
+            }
 
-            std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["relationships"]["rule"] << '\n';  // What fields will the user search
+            if(Comp(attribute, "rule") == 0) { // Will show only the rule field from the Json
 
-          }
+              std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["relationships"]["rule"] << '\n';  // What fields will the user search
 
-          if(Comp(attribute, "type") == 0) { // Will show only the type field from the Json
+            }
 
-            std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["type"] << '\n'; // What fields will the user search
+            if(Comp(attribute, "type") == 0) { // Will show only the type field from the Json
+
+              std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["type"] << '\n'; // What fields will the user search
+
+            }
+
+            // if(Comp(attribute, "meta") == 0) { // Will show only the meta field from the Json <-- Its probally how many ckecs returned in this page <--
+
+            //   std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["meta"] << '\n'; // What fields will the user search
+
+            // }
+
+          PONTO
+
+        }
+
+      }
+
+      if(decisionEndpointSearchJson == 4) {
+
+          for(auto el : parsed_json["computers"].items()) {
+
+            // if(Comp(attribute, "hostname") == 0) { // Will show only the type field from the Json
+
+            //   std::cout << std::setw(4) << el.key() << ": " << std::setw(4) << el.value()["hostName"] << '\n'; // What fields will the user search
+
+            // }
+
+            if(Comp(attribute, "y") == 0) { // Will show only the type field from the Json
+
+              std::cout << std::setw(4) << el.key() << ": " << std::setw(4) << el.value()["hostName"] << ": " << std::setw(4) << el.value()["ID"] << 
+              std::setw(4) << ": " << el.value()["displayName"] << std::setw(4) << ": " << el.value()["platform"] << 
+              " Last IP Used: " << std::setw(4) << el.value()["lastIPUsed"] << '\n'; // What fields will the user search
+
+              std::cout << "Tasks: " << std::setw(6) << el.value()["tasks"] << '\n'; 
+
+              // std::cout << "Policy ID: " << std::setw(6) << el.value()["policyID"] << '\n';
+
+              std::cout << "Computer Status: " << std::setw(6) << el.value()["computerStatus"] << "\n\n";
+
+              std::cout << "Firewall Status: " << std::setw(6) << el.value()["firewall"] << "\n\n";
+
+              std::cout << "Intrusion Prevention Status: " << std::setw(6) << el.value()["intrusionPrevention"] << "\n\n";
+
+              std::cout << "Web Reputation Status: " << std::setw(6) << el.value()["webReputation"] << "\n\n";
+
+              std::cout << "Anti Malware Status: " << std::setw(6) << el.value()["antiMalware"] << "\n\n";
+
+              std::cout << "Application Control Status: " << std::setw(6) << el.value()["applicationControl"] << "\n\n";
+
+              std::cout << "Integrity Monitoring Status: " << std::setw(6) << el.value()["integrityMonitoring"] << "\n\n";
+
+              std::cout << "Log Inspection Status: " << std::setw(6) << el.value()["logInspection"] << "\n\n";
+
+            }
+
+            PONTO
 
           }
           
-          // if(Comp(attribute, "meta") == 0) { // Will show only the meta field from the Json <-- Its probally how many ckecs returned in this page <--
-
-          //   std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["meta"] << '\n'; // What fields will the user search
-
-          // }
-
-        PONTO
-
       }
 
       ifs.close();
@@ -123,7 +171,7 @@ printf("What do you want to:\n"
                           "1 - Search through the JSON file\n"
                           "2 - Read the whole file and print it in the terminal\n"
                           "3 - Check the product and Write the information in the C1SPM.json file\n"
-                          "4 - Start a Scan in the product\n\n");
+                          "4 - Start a Scan in the product - Cloud One Conformity\n\n");
 
   int decision = 0;
 
@@ -140,7 +188,8 @@ printf("What do you want to:\n"
         printf("Which Endpoint you searched before: \n"
                             "1 - Get Cloud Conformity Accounts\n"
                             "2 - Get Cloud Conformity All Accounts Checks\n"
-                            "3 - Get Cloud Conformity List All Events\n");
+                            "3 - Get Cloud Conformity List All Events\n"
+                            "4 - Get Cloud One Workload Security Computers\n");
 
         printf("Option: ");
 
@@ -157,7 +206,7 @@ printf("What do you want to:\n"
           puts("Do you want the attributes field, or id, or relationships: ");
           getline(std::cin, field);
 
-          findJson(field);
+          findJson(field, decisionEndpointSearchJson);
 
         }
 
@@ -168,7 +217,7 @@ printf("What do you want to:\n"
           puts("Do you want the attributes field, or id, or relationships, or rule, or type: ");
           getline(std::cin, field);
 
-          findJson(field);
+          findJson(field, decisionEndpointSearchJson);
           
         }
 
@@ -179,7 +228,18 @@ printf("What do you want to:\n"
           puts("Do you want the attributes field, or type, or id, or relationships ");
           getline(std::cin, field);
 
-          findJson(field);
+          findJson(field, decisionEndpointSearchJson);
+
+        }
+
+        else if(decisionEndpointSearchJson == 4) {
+
+          std::cin.ignore();
+
+          puts("Do you want to know more about the computerStatus[y][n]: ");
+          getline(std::cin, field);
+
+          findJson(field, decisionEndpointSearchJson);
 
         }
 
@@ -216,7 +276,8 @@ printf("What do you want to:\n"
         printf("Which Endpoint: \n"
                             "1 - Get Cloud Conformity Accounts\n"
                             "2 - Get Cloud Conformity All Accounts Checks\n"
-                            "3 - Get Cloud Conformity List All Events\n");
+                            "3 - Get Cloud Conformity List All Events\n"
+                            "4 - Get Cloud One Workload Security Computers\n");
 
         printf("Option: ");
 
@@ -274,6 +335,23 @@ printf("What do you want to:\n"
             std::cout << url_e << std::endl;
 
             cc_list_all_events(api, url_e);
+
+          }
+
+          if(decisionEndpoint == 4) {
+
+            std::cin.ignore();
+
+            std::string url;
+
+            printf("Qual a sua URL: ");
+            getline(std::cin, url);
+
+            std::string url_ds_c = url + std::string("/computers");
+
+            std::cout << url_ds_c << std::endl;
+
+            ds_computers(api, url_ds_c);
 
           }
   }
