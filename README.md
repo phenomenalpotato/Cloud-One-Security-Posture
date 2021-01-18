@@ -12,12 +12,12 @@ First thing to do is to <u>export</u> your <b>ApiKey</b> as an <i>Environment Va
     - export api="api-secret-key: your_api_key_here"
 
 
-If you have your <b>Cloud One Conformity Account Hosted</b> in <b>us-west-2</b> and want to use the <b>Get Cloud One Conformity Functions</b>: 
+If you have your <b>Cloud One Conformity Account Hosted</b> in <b>us-west-2</b> and want to use the <b>Cloud One Conformity Functions</b>: 
         
     - https://us-west-2-api.cloudconformity.com
 
 
-If you want to use <b>Cloud One Workload Security and want use the <b>Get Cloud One Workload Security Functions</b>:
+If you want to use <b>Cloud One Workload Security and want use the <b>Cloud One Workload Security Functions</b>:
 
     - https://app.deepsecurity.trendmicro.com/api
 
@@ -39,7 +39,7 @@ If you want to use <b>Cloud One Workload Security and want use the <b>Get Cloud 
 
         - make debug
         
-        And then run the program with the argument that you want to use!
+        And then run the program!
 
     - To see which Environment Variables exist in your session:
 
@@ -63,6 +63,10 @@ If you want to use <b>Cloud One Workload Security and want use the <b>Get Cloud 
         - Get All Cloud One Workload Security Computers
 
         Function Description: List all computers
+
+        - Get The List of Intrusion Prevention Rules on a Computer
+
+        Function Description: List the Intrusion Prevention Rules Applied on a Computer
 
 
 You can if you want, after the program run, unset the Environment Variables:

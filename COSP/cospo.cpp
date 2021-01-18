@@ -8,6 +8,8 @@
 #include "sm.cpp"
 #include "ds.cpp"
 
+// Fazer um tipo de opção que permite o User de checar a conexão com a URL/ API do produto!! Ver se está resolvendo Nome, consegue chegar no produto etc
+
 #define PONTO puts("==============--------------------===========================---------------------");
 
 
@@ -277,7 +279,8 @@ printf("What do you want to:\n"
                             "1 - Get Cloud Conformity Accounts\n"
                             "2 - Get Cloud Conformity All Accounts Checks\n"
                             "3 - Get Cloud Conformity List All Events\n"
-                            "4 - Get Cloud One Workload Security Computers\n");
+                            "4 - Get Cloud One Workload Security Computers\n"
+                            "5 - Get Cloud One Workload Security Intrusion Prevention Rules\n");
 
         printf("Option: ");
 
@@ -352,6 +355,30 @@ printf("What do you want to:\n"
             std::cout << url_ds_c << std::endl;
 
             ds_computers(api, url_ds_c);
+
+          }
+
+          if(decisionEndpoint == 5) {
+
+            std::cin.ignore();
+
+            std::string url;
+
+            std::string comp;
+
+            printf("Qual a sua URL: ");
+            getline(std::cin, url);
+
+            // std::cin.ignore();
+
+            printf("Qual o Computador que pegar as regras de IPS: ");
+            getline(std::cin, comp);
+
+            std::string url_ds_ipsr = url + std::string("/computers/") + comp + std::string("/intrusionprevention/rules");
+
+            std::cout << url_ds_ipsr << std::endl;
+
+            ds_list_ips_rules(api, url_ds_ipsr);
 
           }
   }
