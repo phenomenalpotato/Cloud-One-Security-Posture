@@ -3,13 +3,22 @@ A simple way to see your Cloud Security Posture while using Trend Micro Cloud On
 
 First thing to do is to <u>export</u> your <b>ApiKey</b> as an <i>Environment Variables</i>:
 
-    - export api="Authorization: ApiKey your_api_key"
+    Cloud One Conformity:
 
+    - export api="Authorization: ApiKey your_api_key_here"
 
-For example, if you have your <b>Cloud Conformity Account Hosted</b> in <b>us-west-2</b> and want to use the <b>Get Cloud Conformity Accounts function</b>: 
+    Cloud One Workload Security:
+
+    - export api="api-secret-key: your_api_key_here"
+
+If you have your <b>Cloud One Conformity Account Hosted</b> in <b>us-west-2</b> and want to use the <b>Cloud One Conformity Functions</b>: 
         
-    - "https://us-west-2-api.cloudconformity.com"
+    - https://us-west-2-api.cloudconformity.com
 
+
+If you want to use <b>Cloud One Workload Security and want use the <b>Cloud One Workload Security Functions</b>:
+
+    - https://cloudone.trendmicro.com/api
 
 <b>HOW TO USE:</b>
 
@@ -29,7 +38,7 @@ For example, if you have your <b>Cloud Conformity Account Hosted</b> in <b>us-we
 
         - make debug
         
-        And then run the program with the argument that you want to use!
+        And then run the program!
 
     - To see which Environment Variables exist in your session:
 
@@ -38,19 +47,25 @@ For example, if you have your <b>Cloud Conformity Account Hosted</b> in <b>us-we
 
 <b>HOW TO USE: List of available functions for now: </b>
 
-    If you want to LIST_ALL_CLOUD_CONFORMITY_ACCOUNTS:
-
         - Get Cloud Conformity Accounts
 
         Function Description: This function allows you to query all accounts that you have access to and see their Account ID.
 
-        - make Get Cloud Conformity All Accounts Checks
+        - Get Cloud Conformity All Accounts Checks
 
         Function Description: This function will bring from all accounts that you have access to, checks that are only FAILURE AND SECURITY related.
 
-        - make Get Cloud Conformity List All Events
+        - Get Cloud Conformity List All Events
 
-        Function Description: This endpoint allows you to collect events that you have access to.
+        Function Description: This function allows you to collect events that you have access to.
+
+        - Get All Cloud One Workload Security Computers
+
+        Function Description: List all computers
+
+        - Get The List of Intrusion Prevention Rules on a Computer
+
+        Function Description: List the Intrusion Prevention Rules Applied on a Computer
 
 
 You can if you want, after the program run, unset the Environment Variables:
