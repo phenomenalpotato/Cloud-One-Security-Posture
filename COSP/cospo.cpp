@@ -13,8 +13,6 @@
 #define PONTO puts("==============--------------------===========================---------------------");
 
 
-// Tirar o Include, simplesmente compilar os 3 arquivos
-
 // Fazer com que o user possa passar mais de um argumento e fazer com isso, consiga executar mais funções do que de uma vez!! 
 
 using json =  nlohmann::json;
@@ -70,8 +68,8 @@ void findJson(std::string attribute, short int decisionEndpointSearchJson) {
 
             if(Comp(attribute, "attributes") == 0) { // Will show only the attribute field from the Json
 
-              std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["attributes"] << '\n';  // What fields will the user search
-
+              std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["attributes"] << '\n'; // What fields will the user search
+            
             }
 
             if(Comp(attribute, "id") == 0) { // Will show only the id field from the Json
@@ -98,12 +96,6 @@ void findJson(std::string attribute, short int decisionEndpointSearchJson) {
 
             }
 
-            // if(Comp(attribute, "meta") == 0) { // Will show only the meta field from the Json <-- Its probally how many ckecs returned in this page <--
-
-            //   std::cout << std::setw(3) << el.key() << ": " << std::setw(4) << el.value()["meta"] << '\n'; // What fields will the user search
-
-            // }
-
           PONTO
 
         }
@@ -114,12 +106,6 @@ void findJson(std::string attribute, short int decisionEndpointSearchJson) {
 
           for(auto el : parsed_json["computers"].items()) {
 
-            // if(Comp(attribute, "hostname") == 0) { // Will show only the type field from the Json
-
-            //   std::cout << std::setw(4) << el.key() << ": " << std::setw(4) << el.value()["hostName"] << '\n'; // What fields will the user search
-
-            // }
-
             if(Comp(attribute, "y") == 0) { // Will show only the type field from the Json
 
               std::cout << std::setw(4) << el.key() << ": " << std::setw(4) << el.value()["hostName"] << ": " << std::setw(4) << el.value()["ID"] << 
@@ -127,8 +113,6 @@ void findJson(std::string attribute, short int decisionEndpointSearchJson) {
               " Last IP Used: " << std::setw(4) << el.value()["lastIPUsed"] << '\n'; // What fields will the user search
 
               std::cout << "Tasks: " << std::setw(6) << el.value()["tasks"] << '\n'; 
-
-              // std::cout << "Policy ID: " << std::setw(6) << el.value()["policyID"] << '\n';
 
               std::cout << "Computer Status: " << std::setw(6) << el.value()["computerStatus"] << "\n\n";
 
@@ -294,7 +278,7 @@ printf("What do you want to:\n"
 
             std::string url;
 
-            printf("Qual a sua URL: ");
+            printf("What is your URL: ");
             getline(std::cin, url);
 
             std::string url_l = url + std::string("/v1/accounts"); // Will concatenate the variable url at the end with /v1/accounts 
@@ -313,7 +297,7 @@ printf("What do you want to:\n"
 
             std::string url;
 
-            printf("Qual a sua URL: ");
+            printf("What is your URL: ");
             getline(std::cin, url);
 
             std::string url_c = url + std::string("/v1/checks?accountIds=FIYGqrqnr&filter%5Bcategories%5D=security&filter%5Bstatuses%5D=FAILURE"); // Will concatenate the variable url at the end with /v1/accounts 
@@ -330,7 +314,7 @@ printf("What do you want to:\n"
 
             std::string url;
 
-            printf("Qual a sua URL: "); 
+            printf("What is your URL: "); 
             getline(std::cin, url);
 
             std::string url_e = url + std::string("/v1/events"); // Will concatenate the variable url at the end with
@@ -347,7 +331,7 @@ printf("What do you want to:\n"
 
             std::string url;
 
-            printf("Qual a sua URL: ");
+            printf("What is your URL: ");
             getline(std::cin, url);
 
             std::string url_ds_c = url + std::string("/computers");
@@ -366,12 +350,10 @@ printf("What do you want to:\n"
 
             std::string comp;
 
-            printf("Qual a sua URL: ");
+            printf("What is your URL: ");
             getline(std::cin, url);
 
-            // std::cin.ignore();
-
-            printf("Qual o Computador que pegar as regras de IPS: ");
+            printf("From which computer do you want to check the IPS rules: ");
             getline(std::cin, comp);
 
             std::string url_ds_ipsr = url + std::string("/computers/") + comp + std::string("/intrusionprevention/rules");
@@ -399,14 +381,12 @@ printf("What do you want to:\n"
 
             std::string url;
 
-            printf("Qual a sua URL: ");
+            printf("What is your URL: ");
             getline(std::cin, url);
-
-            // std::cin.ignore();
 
             std::string account;
 
-            printf("Qual a conta que quer iniciar o Conformity Bot: ");
+            printf("Which account wants to start the Conformity Bot: ");
             getline(std::cin, account);
 
             std::string url_s = url + std::string("/v1/accounts/") + account + std::string("/scan"); 
@@ -423,50 +403,6 @@ printf("What do you want to:\n"
 
     exit(10); // Error 10: Means that the user choose a diferente option or didn't choose nothing at all in the decisionEndpoint variable
   }
-
-    // char *url_l = getenv("url_l");
-
-    // char *url_c = getenv("url_c");
-
-    // char *url_e = getenv("url_e");
-
-    // if(api == NULL || url_l == NULL || url_c == NULL || url_e == NULL) {
-
-    //     perror("ERROR: Variables not found!!");
-
-    // }
-   
-    // switch (*argv[1]) {
-   
-    // case 'l':
-
-    // std::cin.ignore(); // Ignores \n or the previous input that was left 
-
-    // std::string url;
-
-    // printf("Qual a sua URL: ");
-
-    // getline(std::cin, url);
-
-    // std::string url_l = url + std::string("/v1/accounts"); // Will concatenate the variable url at the end with /v1/accounts 
-
-    // cc_get_accounts(api, url_l);
-
-    // break;
-
-    // case 'c':
-
-    //     cc_all_accounts_checks(api, url_c);
-
-    // break;
-
-    // case 'e':
-
-    //     cc_list_all_events(api, url_e);
-
-    // break;
-    
-    // }
 
     return 0;
 }

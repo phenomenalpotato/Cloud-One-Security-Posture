@@ -9,7 +9,6 @@ all:
 
 execute: 
 	@echo "Executing the program with no Arguments..."
-	#@./${exe} | jq .
 	@./${exe}
 
 delete:
@@ -22,18 +21,3 @@ debug:
 
 env-var:
 	@echo $$api
-
-
-	#@echo $$url_l
-	#@echo $$url_c
-	#@echo $$url_e
-
-#cc_list_accounts:
-	#@./${exe} l | jq .
-#	@./${exe} l | jq .
-
-#cc_all_accounts_checks:
-#	@./${exe} c | jq .
-
-#cc_list_all_events:
-#	@./${exe} e | jq .
