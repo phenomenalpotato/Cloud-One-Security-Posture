@@ -5,7 +5,7 @@ COMP = g++
 
 all:
 	@echo "Compiling..."
-	${COMP} -std=c++11 -Isingle_include ${sfile} $(LIBS) -o ${exe}
+	${COMP} -std=c++11 -Wall -Wextra -pedantic -Werror -Isingle_include ${sfile} $(LIBS) -o ${exe}
 
 execute: 
 	@echo "Executing the program with no Arguments..."

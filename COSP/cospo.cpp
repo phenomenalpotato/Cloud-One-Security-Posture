@@ -183,7 +183,7 @@ printf("What do you want to:\n"
 
         std::string field ; // This variable will store the name of the field the user wants from the Json file
 
-        scanf("%hu", &decisionEndpointSearchJson);
+        scanf("%hi", &decisionEndpointSearchJson);
 
         if(decisionEndpointSearchJson == 1) {
         
@@ -270,7 +270,7 @@ printf("What do you want to:\n"
 
         short int decisionEndpoint;
 
-        scanf("%hu", &decisionEndpoint);
+        scanf("%hi", &decisionEndpoint);
 
           if(decisionEndpoint == 1) {
 
@@ -291,7 +291,7 @@ printf("What do you want to:\n"
 
           if(decisionEndpoint == 2) {
 
-            // Tem que fazer uma concatenação de qual conta ele quer pegar os checks e muito provavelmente vai ter que fazer paginação
+            // Muito provavelmente vai ter que fazer paginação
 
             std::cin.ignore(); // Ignores \n or the previous input that was left 
 
@@ -300,7 +300,12 @@ printf("What do you want to:\n"
             printf("What is your URL: ");
             getline(std::cin, url);
 
-            std::string url_c = url + std::string("/v1/checks?accountIds=FIYGqrqnr&filter%5Bcategories%5D=security&filter%5Bstatuses%5D=FAILURE"); // Will concatenate the variable url at the end with /v1/accounts 
+            std::string account;
+
+            printf("Which account do you want the Failure Security Checks: ");
+            getline(std::cin, account);
+
+            std::string url_c = url + std::string("/v1/checks?accountIds=") + account + std::string("&filter%5Bcategories%5D=security&filter%5Bstatuses%5D=FAILURE"); // Will concatenate the variable url at the end with /v1/accounts 
 
             std::cout << url_c << std::endl;
 
