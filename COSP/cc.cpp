@@ -168,7 +168,7 @@ if(curl_scan) {
     struct curl_slist *headers = NULL;
 
 
-    headers = curl_slist_append(headers, "Authorization: ApiKey 448BRzg8pHZLY5WWCqdsAVVGDnjZQwXoDMWMgShTtySpNnosGDJZ5fsCQc9HXXgE");
+    headers = curl_slist_append(headers, api);
     headers = curl_slist_append(headers, "Content-Type: application/vnd.api+json");
     curl_easy_setopt(curl_scan, CURLOPT_HTTPHEADER, headers);
     res = curl_easy_perform(curl_scan);
@@ -179,9 +179,3 @@ if(curl_scan) {
   return (int)res;
 
 }
-
-/*
-
-
-
-*/
