@@ -83,7 +83,8 @@ For more information about the API for <b>Trend Micro Cloud One Workload Securit
 
 <b>WARNING:</b>
 
-        - This project/ files are only for DEMO purpose!!
+        - This project/ files are only for DEMONSTRATION purpose!! 
+        - This is a work in progress!!
 
 
 <i>If you want to contribute, feel free to do so!</i>
