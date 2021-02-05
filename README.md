@@ -66,11 +66,7 @@ If you want to use <b>Cloud One Workload Security and want use the <b>Cloud One 
         - Get The List of Intrusion Prevention Rules on a Computer
 
         Function Description: List the Intrusion Prevention Rules Applied on a Computer
-
-
-You can if you want, after the program run, unset the Environment Variables:
-
-    - unset api
+        
 
 For more information about the API for <b>Trend Micro Cloud One Workload Security</b>, <b>Smart Check</b> and <b>Cloud Conformity</b>:
 
